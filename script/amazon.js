@@ -29,6 +29,36 @@ let project = [
     },
     price: 799,
   },
+  {
+    img: "images/products/black-2-slot-toaster.jpg",
+    name: "2 Slot Toaster - Black",
+    rating: {
+      star: 5,
+      count: 56,
+    },
+
+    price: 18.99,
+  },
+
+  {
+    img: "images/products/6-piece-white-dinner-plate-set.jpg",
+    name: "6 Piece White Dinner Plate Set",
+    rating: {
+      star: 4,
+      count: 37,
+    },
+    price: 2067,
+  },
+
+  {
+    img: "images/products/6-piece-non-stick-baking-set.webp",
+    name: "6-Piece Nonstick, Carbon Steel Oven Bakeware Baking",
+    rating: {
+      star: 4.5,
+      count: 175,
+    },
+    price: 3499,
+  },
 ];
 
 let html = "";
