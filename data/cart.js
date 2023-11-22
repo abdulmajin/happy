@@ -1,4 +1,5 @@
 export var cart = [];
+var sadiq =0
 
 /*
 {

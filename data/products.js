@@ -551,12 +551,13 @@ export function saveLocalStore () {
 
   
 }
-let selectQuantity = document.querySelector(`.js-quantity-selector`);
 //let myval 
 
 document.querySelectorAll(".add-cart").forEach((addCartEl) => {
 
   addCartEl.addEventListener("click", () => {
+    let selectQuantity = document.querySelector(`.js-quantity-selector`);
+
 //   let selectQuantity = document.getElementById("js-quantity-selector")  
   //  myval =  selectQuantity.value
 
