@@ -1,7 +1,9 @@
+import { cart, AddCart, qCoutadd } from "../data/cart.js";
 let lst = document.querySelector(".list_p");
 
 let project = [
   {
+    id: "01",
     img: "images/products/athletic-cotton-socks-6-pairs.jpg",
     name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
     rating: {
@@ -11,6 +13,7 @@ let project = [
     price: 1090,
   },
   {
+    id: "02",
     img: "images/products/intermediate-composite-basketball.jpg",
     name: "Intermediate Size Basketball",
     rating: {
@@ -21,6 +24,7 @@ let project = [
   },
 
   {
+    id: "03",
     img: "images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",
     name: "Adults Plain Cotton T-Shirt - 2 Pack",
     rating: {
@@ -30,6 +34,7 @@ let project = [
     price: 799,
   },
   {
+    id: "04",
     img: "images/products/black-2-slot-toaster.jpg",
     name: "2 Slot Toaster - Black",
     rating: {
@@ -41,6 +46,7 @@ let project = [
   },
 
   {
+    id: "05",
     img: "images/products/6-piece-white-dinner-plate-set.jpg",
     name: "6 Piece White Dinner Plate Set",
     rating: {
@@ -51,6 +57,7 @@ let project = [
   },
 
   {
+    id: "06",
     img: "images/products/6-piece-non-stick-baking-set.webp",
     name: "6-Piece Nonstick, Carbon Steel Oven Bakeware Baking",
     rating: {
@@ -102,15 +109,23 @@ project.forEach((product) => {
 
   <div class="product-spacer"></div>
 
-  <div class="added-to-cart">
+  <div class="added-to-cart add-cart">
     <img src="images/icons/checkmark.png" />
     Added
   </div>
 
-  <button class="add-to-cart-button button-primary">Add to Cart</button>
+  <button class="add-to-cart-button  button-primary addCartBtn" data-product-id="${
+    product.id
+  }">Add to Cart</button>
 </div>
 `;
 });
 
 lst.innerHTML = html;
-console.log(html);
+let btnCard = document.querySelectorAll(".addCartBtn");
+
+addEventListener("click", () => {
+  AddCart();
+});
+
+console.log(cart);

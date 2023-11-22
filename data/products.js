@@ -1,6 +1,15 @@
-let lst = document.querySelector(".list_p");
+import { cart as cat } from "./cart.js";
 
-const products = [
+let lst = document.querySelector(".list_p");
+let cartQ = document.querySelector(".cardQuantityeEl");
+
+export let cart = JSON.parse(localStorage.getItem("item")) || [{
+
+  productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+  quantity: 1,
+}]
+
+export let products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     image: "images/products/athletic-cotton-socks-6-pairs.jpg",
@@ -475,6 +484,7 @@ const products = [
 
 let html = "";
 
+
 products.forEach((products) => {
   html += `
   <div class="product-container">
@@ -502,7 +512,7 @@ products.forEach((products) => {
   <div class="product-price">$${(products.priceCents / 100).toFixed(2)}</div>
 
   <div class="product-quantity-container">
-    <select>
+    <select class="js-quantity-selector" data-qselector="quantity-selector-${products.id}">
       <option selected value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -523,10 +533,66 @@ products.forEach((products) => {
     Added
   </div>
 
-  <button class="add-to-cart-button button-primary">Add to Cart</button>
+  <button class="add-to-cart-button button-primary add-cart" data-product-id="${
+    products.id
+  }">Add to Cart</button>
 </div>
 
   `;
 });
 
+let quantitySum = 0;
 lst.innerHTML = html;
+//let cart = JSON.parse(localStorage.getItem("item"));
+
+export function saveLocalStore () {
+
+  localStorage.setItem("item", JSON.stringify(cart));
+
+  
+}
+let selectQuantity = document.querySelector(`.js-quantity-selector`);
+//let myval 
+
+document.querySelectorAll(".add-cart").forEach((addCartEl) => {
+
+  addCartEl.addEventListener("click", () => {
+//   let selectQuantity = document.getElementById("js-quantity-selector")  
+  //  myval =  selectQuantity.value
+
+    let productId = addCartEl.dataset.productId; 
+   let selectq = selectQuantity.value;
+    console.log(selectq)
+
+
+    let matchItem = null;
+
+    //console.log(myval)
+
+    cart.forEach((item) => {
+      if (productId === item.productId) {
+        matchItem = item;
+      }
+    });
+
+    if (matchItem) {
+      matchItem.quantity += 1;
+    } else {
+      cart.push({
+        productId: productId,
+        quantity: 1,
+      });
+
+      saveLocalStore () 
+     // localStorage.setItem("item", JSON.stringify(cart));
+
+      console.log(cart);
+    }
+
+    let quantitySum = 0;
+    cart.forEach((Sumq) => {
+      quantitySum += Sumq.quantity;
+    });
+    cartQ.innerHTML = quantitySum;
+  });
+});

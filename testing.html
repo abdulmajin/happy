@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+  </head>
+  <body>
+    <div class="product-quantity-container">
+      <select class="quantitySelect">
+        <option selected value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+      <button class="addBtn">add to cart</button>
+    </div>
+    <button class="sum">sum quantity</button>
+
+    <script>
+      let cart = [
+        {
+          quantity: 1,
+        },
+        {
+          quantity: 2,
+          id: "01",
+        },
+      ];
+
+      let addQ = document.querySelector(".sum");
+      addQ.addEventListener("click", () => {
+        cart.push({
+          quantity: 2,
+        });
+
+        let sumQ = 0;
+        cart.forEach((countQ) => {
+          sumQ += countQ.quantity;
+        });
+
+        console.log(sumQ);
+
+        console.log(cart);
+
+        cart.forEach((finditem) => {
+          let find = "01";
+          if (find === finditem.id) {
+            console.log(
+              ` item details are ${finditem.id} ${finditem.quantity}`
+            );
+          }
+        });
+      });
+
+      let qSelect = document.querySelector(".quantitySelect");
+      let addSelect = document.querySelector(".addBtn");
+
+      addSelect.addEventListener("click", () => {
+        let selectedValue = qSelect.value;
+
+        console.log(selectedValue);
+      });
+    </script>
+  </body>
+</html>
